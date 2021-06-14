@@ -8,7 +8,6 @@ public class ClasseCadastro {
 	private int idade;
 	private String gênero;
 	
-	
 	public String getNome() {
 		return nome;
 	}
@@ -33,19 +32,18 @@ public class ClasseCadastro {
 				+ "\n\tQual gênero você se identifica : " + gênero 
 				+ "\n\t====================================================="); }
 		
-		public void limpa() {
-			try {
-				Robot robot = new Robot();
-				robot.keyPress(KeyEvent.VK_SHIFT);
-				robot.keyPress(KeyEvent.VK_F10);
-				robot.keyPress(KeyEvent.VK_R);
-				robot.keyRelease(KeyEvent.VK_SHIFT);
-			}catch(AWTException e) {
-			e.printStackTrace();
-			}
-			
-			
-		
-		
+	public void limpa() {
+		try {
+			Robot robot = new Robot();
+			robot.keyPress(KeyEvent.VK_SHIFT);
+			robot.keyPress(KeyEvent.VK_F10);
+			robot.keyPress(KeyEvent.VK_R);
+			robot.keyRelease(KeyEvent.VK_SHIFT);
+			robot.keyRelease(KeyEvent.VK_F10);
+			robot.keyRelease(KeyEvent.VK_R);				
+		}catch(AWTException e) {
+		e.printStackTrace();
+		}
     }
+
 }

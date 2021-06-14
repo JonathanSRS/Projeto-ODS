@@ -12,7 +12,6 @@ public class ImpressaoImc {
 		calculadoraImc Imc = new calculadoraImc();
 		int lista;
 	    int endereco =  1;
-	    ClasseCadastro L = new ClasseCadastro();
 		ArrayList<String> SL = new ArrayList<>();
 		ArrayList<String> ZN = new ArrayList<>();
 		ArrayList<String> ZO = new ArrayList<>();
@@ -75,66 +74,39 @@ public class ImpressaoImc {
 		
 		System.out.println("Digite a Idade:");
 		cad1.setIdade(scan.nextInt());
-		
+		cad1.limpa();
+		Thread.sleep(1000);
 		cad1.Impressao();
         
 		System.out.println("Digite o peso em kg e a altura em metros: ");
-		Imc.setCalculoImc(scan.nextDouble(),scan.nextDouble());
+		System.out.print("Peso: ");
+		Imc.setPeso(scan.nextDouble());
+		System.out.print("Altura: ");
+		Imc.setAltura(scan.nextDouble());
+		cad1.limpa();
+		Thread.sleep(1000);
+		cad1.Impressao();
+		Imc.setCalculoImc(Imc.getPeso(),Imc.getAltura());
 		
 		
 		Thread.sleep(1000);
 		System.out.println("Aguarde enquanto fazemos o cálculo do IMC...........");
 		Thread.sleep(3000);
 		
-		System.out.println("\nO seu IMC é: " + Imc.getCalculoImc());
-	    System.out.println();
-	    System.out.println("=======================================================================================");
-	    System.out.println("LEIA À SEGUIR AS RECOMENDAÇÕES NUTRICIONAIS BASEADAS NO RESULTADO DO CÁLCULO DO SEU IMC");
-	    System.out.println("=======================================================================================");
-
-	    if (Imc.getCalculoImc() < 18.5) {
-			System.out.println("Usuario está abaixo do peso ideal (IMC < 18.5)");
-			System.out.println("Procurar ajuda nutricional para dar início a uma dieta rica em vitaminas, \nnutrientes e sais minerais.");
-			
-		}else if(Imc.getCalculoImc() >= 18.5 && Imc.getCalculoImc() <25 ) {
-			System.out.println("Usuario está dentro do peso ideal (IMC >= 18.5 e < 25)");
-			System.out.println("Para manter-se com o IMC saudável, é importante investir também em atividades físicas diárias e \nno consumo de todos os nutrientes necessários para o corpo manter-se em equilíbrio.");
-
-			
-		}else if(Imc.getCalculoImc() >=25 && Imc.getCalculoImc() <30 ) {
-			System.out.println("Usuario está em sobrepeso (IMC >= 25 e <30)");
-			System.out.println("Converse com uma nutricionista e adote uma prática de exercícios aeróbicos");
-
-			
-			
-		}else if(Imc.getCalculoImc() >=30 && Imc.getCalculoImc() <35 ) {
-			System.out.println("Usuario está com Obesidade Grau I (IMC >=30 e <35)");
-			System.out.println("Isso se deve ao excesso de gordura que leva à falta de preparo físico \ne que acaba otimizando os fatores sedentários e aumentando a obesidade. \nÉ preciso procurar ajuda médica com urgência (Tratamentos de Obesidade) \npara que o quadro não se agrave.");
-			
-			
-		}else if(Imc.getCalculoImc() >=35 && Imc.getCalculoImc() <40 ) {
-			System.out.println("Usuario está com Obesidade Grau II (IMC >= 35 e <40)");
-			System.out.println("O excesso de gordura coloca em alto risco o bem-estar e a vida do paciente, \npodendo levar ao desenvolvimento de diversas doenças, dentre elas a \ndiabetes, a hipertensão, ataques do coração, infarto, derrames cerebrais, \nartrite, má circulação e muitas outras.");
-			
-			
-		}else if(Imc.getCalculoImc() >=40 ) {
-			System.out.println("Usuario está com Obesidade Grau III (IMC >= 40)");
-			System.out.println("O excesso de gordura coloca em alto risco o bem-estar e a vida do paciente, \npodendo levar ao desenvolvimento de diversas doenças, dentre elas a \ndiabetes, a hipertensão, ataques do coração, infarto, derrames cerebrais, \nartrite, má circulação e muitas outras.");
-		}
-	    System.out.println("=======================================================================================");
+		//codições
+		
+	    Imc.avaliacao();
 	    
-	    
-	    
-	     Thread.sleep(5000);
+	     Thread.sleep(8000);
 	   
-	 	 L.limpa();
+	     cad1.limpa();
 	     
-	    Thread.sleep(3000);
+	    Thread.sleep(500);
 	    
 	     System.out.println("Qual é a zona da cidade de São Paulo onde o paciente mora ([1]-sul, [2]-norte,[3]- oeste, [4]-leste,[5]- centro):" );
-	     System.out.println();
 	     endereco=scan.nextInt();
-	     
+	     cad1.limpa(); 
+		Thread.sleep(2000);
 	     System.out.println("========================================================================================================================");
 	     System.out.println("SEGUE A LISTA DE UBS, BANCO DE ALIMENTOS E UNIDADES DA REDE BOM PRATO, MAIS PRÓXIMAS DA SUA RESIDÊNCIA PARA OBTER AJUDA");
 	     System.out.println("=========================================================================================================================");
@@ -142,33 +114,37 @@ public class ImpressaoImc {
 		 if (endereco == 1) {
 	    
 	   
-	     System.out.println("Zona Sul\n" + SL);
+			 System.out.println("Zona Sul\n" + SL);
 			
-		} 
+		 } 
     
 		 else if(endereco == 2) {
 		 
 			 System.out.println("Zona Norte\n" + ZN);
-	    } 
+		 } 
 		 
 
 	     else if(endereco == 3) {
 	 
-		 System.out.println("Zona Oeste\n" + ZO);
-        } 
+	    	 System.out.println("Zona Oeste\n" + ZO);
+	     } 
 	 
 		 
          else if(endereco == 4) {
 	 
-	     System.out.println("Zona Leste\n" + ZL);
-       } 
+        	 System.out.println("Zona Leste\n" + ZL);
+         } 
 
 		 
          else if(endereco == 5) {
     		 
- 	     System.out.println("Centro\n" + CE);
-        } 
-        
+        	 System.out.println("Centro\n" + CE);
+         } 
+	 		
+		cad1.Impressao();
+		Imc.setCalculoImc(Imc.getPeso(),Imc.getAltura());
+		//Thread.sleep(1000);
+		Imc.avaliacao();
 		System.out.println("==============================================================================================================================");
         System.out.println(" \n\nDigite [1] para imprimir a lista e finalizar atendimento ===== Digite [2] Para Finalizar e ir para o próximo atendimento:");
         lista=scan.nextInt();
